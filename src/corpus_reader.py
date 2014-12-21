@@ -5,7 +5,7 @@ import csv
 import gzip
 
 from collections import defaultdict
-from ec_settings import POS, NEG
+from .ec_settings import POS, NEG
 
 
 class CorpusReader(object):
@@ -41,7 +41,7 @@ class CorpusReader(object):
 
 
    def _read_csv(self, fn):
-      csv_f = gzip.open(fn)
+      csv_f = gzip.open(fn, mode='rt')
       csv_reader = csv.reader(csv_f)
       data = []
       for arow in csv_reader:

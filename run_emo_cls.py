@@ -13,16 +13,16 @@ if __name__ == '__main__':
    e.bigrams_cls.show_most_informative_features(10)
    e.trigrams_cls.show_most_informative_features(10)
 
-   example_sents = ( (u'Było super, to były moje najfajniejsze wakacje!'),
-                     (u'To chyba najzabawniejszy kabaret jaki oglądałem'),
-                     (u'Wszystkiego najlepszego i wesołych świąt'),
-                     (u'Niestety, mieliśmy dużego pecha i przegraliśmy'),
-                     (u'Zachorowałem i leżę w łóżku'),
-                     (u'To bardzo smutna wiadomość, nie mogę tego zrozumieć'),
-                     (u'Zxcjhgoiu ooijasddnakjz zczxnzbxcz qdqdqqfefw sdsdfsdfsdf'),
-                     (u'Przystojniaczek! :-) :D :('))
+   example_sents = ( ('Było super, to były moje najfajniejsze wakacje!'),
+                     ('To chyba najzabawniejszy kabaret jaki oglądałem'),
+                     ('Wszystkiego najlepszego i wesołych świąt'),
+                     ('Niestety, mieliśmy dużego pecha i przegraliśmy'),
+                     ('Zachorowałem i leżę w łóżku'),
+                     ('To bardzo smutna wiadomość, nie mogę tego zrozumieć'),
+                     ('Zxcjhgoiu ooijasddnakjz zczxnzbxcz qdqdqqfefw sdsdfsdfsdf'),
+                     ('Przystojniaczek! :-) :D :('))
 
    for sent in example_sents:
-      print 'Sentence:', sent
+      print('Sentence:', sent)
       res = e.classify(sent)
-      print 'Classified as: %s (%.2f)\n' % res
+      print('Classified as: %s (%.2f)\n' % res)

@@ -4,7 +4,7 @@
 """
       Classify the emotional affinity of sentences.
 """
-from __future__ import division
+
 
 import re
 import gzip
@@ -13,10 +13,10 @@ import msgpack
 
 import nltk
 
-from feature_extraction import FeatureExtraction, emoticons
-from cls_cache import ClsCache
-from corpus_reader import CorpusReader
-from ec_settings import (POS, NEG, NO_CLASS,
+from .feature_extraction import FeatureExtraction, emoticons
+from .cls_cache import ClsCache
+from .corpus_reader import CorpusReader
+from .ec_settings import (POS, NEG, NO_CLASS,
                          TERMS_FN, BIGRAMS_FN, TRIGRAMS_FN,
                          TERMS_BY_ROOT_FORM_FN)
 
@@ -107,10 +107,10 @@ class _EmoClassifier(FeatureExtraction, ClsCache, CorpusReader):
                                             NEG: 1 - pos_prob })
 
       if self._verbose:
-         print " - %s: '%s' probability: %.2f; '%s' probability: %.2f"\
+         print(" - %s: '%s' probability: %.2f; '%s' probability: %.2f"\
                  % ('emoticons',
                     POS, terms_probdist.prob(POS),
-                    NEG, terms_probdist.prob(NEG))
+                    NEG, terms_probdist.prob(NEG)))
 
       return terms_probdist
 
@@ -126,10 +126,10 @@ class _EmoClassifier(FeatureExtraction, ClsCache, CorpusReader):
       terms_probdist = cls.prob_classify(feats)
 
       if self._verbose:
-         print " - %s: '%s' probability: %.2f; '%s' probability: %.2f"\
+         print(" - %s: '%s' probability: %.2f; '%s' probability: %.2f"\
                  % (what,
                     POS, terms_probdist.prob(POS),
-                    NEG, terms_probdist.prob(NEG))
+                    NEG, terms_probdist.prob(NEG)))
 
       return terms_probdist
 
@@ -306,7 +306,7 @@ class EmoClassifier(_EmoClassifier):
 
    def print_confusion_matrix(self, gold, test):
       cm = nltk.ConfusionMatrix(gold, test)
-      print cm.pp()
+      print(cm.pp())
 
 
    def classify(self, sent):

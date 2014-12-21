@@ -9,7 +9,7 @@ fe = FeatureExtraction()
 class TestFeatureExtraction(unittest.TestCase):
 
    def test_normalize_sentence(self):
-      self.assertEqual(fe._normalize_sentence(u'Łódź'), u'lodz')
+      self.assertEqual(fe._normalize_sentence('Łódź'), 'lodz')
 
 
    def test_extract_words(self):
@@ -38,7 +38,7 @@ class TestFeatureExtraction(unittest.TestCase):
                                  'przegrac': ('przegralismy', ),
                                }
 
-      fe._allterms = set([i[0] for i in fe._terms_by_root_form.values()])
+      fe._allterms = set([i[0] for i in list(fe._terms_by_root_form.values())])
       self.assertEqual(fe._stem_sentence('mielismy pecha, ze przegralismy'),
                                                     'miec pech, ze przegrac')
 

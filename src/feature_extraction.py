@@ -14,32 +14,32 @@ from nltk.collocations import (BigramAssocMeasures,
                                TrigramCollocationFinder)
 
 emoticons = {
-   'pos':  [u':-)', u':)',  u':o)', u':]', u':3', u':c)',
-            u':>',  u'=]',  u'8)',  u'=)', u':}', u':^)', u':っ)',
-            u':-D', u':D',  u'8-D', u'8D', u'x-D', u'xD', u'X-D',
-            u'XD',  u'=-D', u'=D',  u'=-3', u'=3', u'B^D',
-            u":'-)", u":')", # tears of happiness
-            u'<3',
-            u';-)', u';)', u'*-)', u'*)', u';-]', u';]', # wink
-            u';D', u';^)', u':-,',
+   'pos':  [':-)', ':)',  ':o)', ':]', ':3', ':c)',
+            ':>',  '=]',  '8)',  '=)', ':}', ':^)', ':っ)',
+            ':-D', ':D',  '8-D', '8D', 'x-D', 'xD', 'X-D',
+            'XD',  '=-D', '=D',  '=-3', '=3', 'B^D',
+            ":'-)", ":')", # tears of happiness
+            '<3',
+            ';-)', ';)', '*-)', '*)', ';-]', ';]', # wink
+            ';D', ';^)', ':-,',
            ],
 
-   'neg': [u'>:[', u':-(', u':(', u':-c', u':c', u':-<', u':っC',
-           u':<',  u':-[', u':[', u':{',
-           u":'-(", u":'(", # crying
-           u':-|', u':@', u'>:(', # angry
-           u'>:\\', u'>:/', u':-/', u':-.', u':/', u':\\', # skeptical
-           u'=/', u'=\\',
-           u':L', u'=L', u':S', u'>.<',
+   'neg': ['>:[', ':-(', ':(', ':-c', ':c', ':-<', ':っC',
+           ':<',  ':-[', ':[', ':{',
+           ":'-(", ":'(", # crying
+           ':-|', ':@', '>:(', # angry
+           '>:\\', '>:/', ':-/', ':-.', ':/', ':\\', # skeptical
+           '=/', '=\\',
+           ':L', '=L', ':S', '>.<',
           ],
 
 }
 
 
 emo_re = {}
-for emo, pattern in emoticons.items():
+for emo, pattern in list(emoticons.items()):
    patterns = [re.escape(i) for i in pattern]
-   emo_re[emo] = re.compile(u'|'.join(patterns), re.UNICODE)
+   emo_re[emo] = re.compile('|'.join(patterns), re.UNICODE)
 
 
 class _FeatureExtraction(object):
@@ -67,7 +67,7 @@ class _FeatureExtraction(object):
       """
          Replace diacritics with regular characters.
       """
-      sent = sent.lower().replace(u'ł', u'l')
+      sent = sent.lower().replace('ł', 'l')
       t1 = None
       try:
          t1 = normalize('NFD', sent)

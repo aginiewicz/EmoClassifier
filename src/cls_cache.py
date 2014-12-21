@@ -3,9 +3,9 @@
 
 import gzip
 import os.path
-import cPickle
+import pickle
 
-from ec_settings import (TERMS_CLS_DIR, BIGRAMS_CLS_DIR, TRIGRAMS_CLS_DIR)
+from .ec_settings import (TERMS_CLS_DIR, BIGRAMS_CLS_DIR, TRIGRAMS_CLS_DIR)
 
 
 class ClsCache(object):
@@ -15,7 +15,7 @@ class ClsCache(object):
          Dump the classifier 'cls' to a pickle named 'fn'.
       """
       w = gzip.open(fn, 'wb')
-      cPickle.dump(cls, w, 1)
+      pickle.dump(cls, w, 1)
       w.close()
 
    def _dump_terms_cls(self, fn=TERMS_CLS_DIR):
@@ -32,7 +32,7 @@ class ClsCache(object):
       if not os.path.exists(fn):
          return None
       w = gzip.open(fn, 'rb')
-      cls = cPickle.load(w)
+      cls = pickle.load(w)
       w.close()
       return cls
 

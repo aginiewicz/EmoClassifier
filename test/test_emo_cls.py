@@ -65,7 +65,7 @@ class TestEmoClassifier(unittest.TestCase):
                                           ({ 'dostac duza nagroda': True }, NEG)
                                         ])
       ec.trigrams_cls = cls
-      res = ec.classify(u'Dostaliśmy duże nagrody')
+      res = ec.classify('Dostaliśmy duże nagrody')
       res = (res[0], round(res[1], 1))
 
       if nltk.__version__[0] == '2':
